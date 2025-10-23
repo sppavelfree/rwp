@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Telegram</title>
+<script>
+const username = 'telegram_username_here'; // ← замени
+const app = 'tg://resolve?domain=' + username;
+const fallback = 'https://t.me/' + username;
+function openApp(){
+  tryOpen(app, fallback);
+}
+function tryOpen(url, fallback){
+  const timer = setTimeout(()=>{location.href=fallback;},1200);
+  location.href = url;
+  window.addEventListener('pagehide',()=>clearTimeout(timer),{once:true});
+}
+</script>
+</head><body onload="openApp()">
+<p style="font-family:sans-serif;text-align:center;margin-top:40vh;">Открываем Telegram…</p>
+</body></html>
